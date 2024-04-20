@@ -3,6 +3,10 @@ from django.http import HttpResponse
 import json
 import sqlite3
 from sqlite3 import  *
+
+from .models import User
+
+
 def test_function(request):
     return HttpResponse(request,'<h3>Регистрация</h3>')
 def func(request):
@@ -14,12 +18,10 @@ def login(request):
 
 
 def new_user(request):
-    if request.method == 'post':
+    if request.method == 'POST':
         name = request.POST.get('login')
         password = request.POST.get('password')
-        db = sqlite3.connect("db.sqlite3")
-        c = db.cursor()
-        ID = request.user.id
-        if name and password:
-            c.execute("INSERT INTO  auth_user Values(ID,password,datetime.today,False,'','',False,True,datetime.today,'')")
-        db.close()
+        newuser = User.objects.create(username = name,password = password)
+        print(newuser)
+
+    return render(request,'main/registration.html')

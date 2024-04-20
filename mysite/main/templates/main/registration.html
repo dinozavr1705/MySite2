@@ -8,19 +8,15 @@
 </head>
 <body>
 
-<form method="post">
+<form method="POST">
     <h3>Регистрация</h3>
     <label for="login">введите логин:</label>
     <input type="text" id="login" name="login">
     <label for="password">введите пароль:</label>
     <input type="text" id="password" name="password">
-</form>
-<form>
-    <form action="new_user"></form>
-    <form method="post">
         {% csrf_token %}
-        <button type="submit" onclick="new_user">регистрация
+        <button type="submit">регистрация
         </button>
     </form>
-</body>
+ </body>
 </html>

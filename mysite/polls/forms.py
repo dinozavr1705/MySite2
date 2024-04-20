@@ -1,7 +1,7 @@
 from django import forms
+from models import User
+class Userform:
+    class Meta:
+        model = User
 
-class User:
-    def __init__(self,username,password):
-        self.__password = password
-        self.username = username
 
