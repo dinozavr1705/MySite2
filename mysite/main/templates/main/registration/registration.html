@@ -7,13 +7,17 @@
 
 </head>
 <body>
-
+<ul>
+    <li>
+        User {{user}}
+    </li>
+</ul>
 <form method="POST">
     {% csrf_token %}
     <h3>Регистрация</h3>
     {{form.username}}
     {{form.password}}
-    <input type="submit" value="Зарегестрировать">
-    </form>
- </body>
+    <input type="submit" class="btn btn-success" value="Зарегистрировать">
+</form>
+</body>
 </html>
