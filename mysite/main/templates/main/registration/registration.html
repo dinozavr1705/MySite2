@@ -7,17 +7,20 @@
 
 </head>
 <body>
-<ul>
-    <li>
-        User {{user}}
-    </li>
-</ul>
-<form method="POST">
-    {% csrf_token %}
+
+<form method="post">
     <h3>Регистрация</h3>
-    {{form.username}}
-    {{form.password}}
-    <input type="submit" class="btn btn-success" value="Зарегистрировать">
+    <label for="login">введите логин:</label>
+    <input type="text" id="login" name="login">
+    <label for="password">введите пароль:</label>
+    <input type="text" id="password" name="password">
 </form>
+<form>
+    <form action="new_user"></form>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" >регистрация
+        </button>
+    </form>
 </body>
 </html>

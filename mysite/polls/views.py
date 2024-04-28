@@ -34,7 +34,6 @@ def new_user(request):
             username = form.cleaned_data.get('username')
             newuser = User.objects.create(username=name, password=password, rating=0)
             print(newuser)
-            newuser.save()
             login(request, newuser)
         else:
             form = UserForm()
@@ -42,21 +41,21 @@ def new_user(request):
 
 def list_of_profiles(request):
     a = QuerySet.iterator
+
     print(a)
     return render(request,"main/page_of_profiles.html",{"a":a})
 
 def loginuser(request):
-    if request.method == "post":
-        return render(request, 'registration/login.html', {"form": AuthenticationForm()})
-    else:
-        user = authenticate(request, username=request.POST['username'],
-                            password=request.POST['password'])
+    if request.method == "POST":
+        user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
         if user is None:
-            return render(request, 'registration/login.html',
-                          {"form": AuthenticationForm(),
-                           'error': "Invalid login credentials!"})
+            return render(request, 'registration/login.html', {"form": AuthenticationForm(), 'error': "Invalid login credentials!"})
         else:
-            login(request, user)
+
+            return render(request, "main/page_of_profile.html", {"user": user})
+    else:
+        return render(request, 'registration/login.html', {"form": AuthenticationForm()})
+
 
 def test_func(request):
     conn = sqlite3.connect('your_database.db')

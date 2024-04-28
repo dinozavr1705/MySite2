@@ -20,3 +20,4 @@ def login(request):
                            "error": "Невалидные данные"})
     else:
         return render(request, "main/registration/login.html", {'form': form, 'error': ""})
+
