@@ -93,10 +93,12 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'GMT'
-
+#AUTH_USER_MODEL = "polls.User"
 USE_I18N = True
-
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/login"
 USE_TZ = True
+LOGOUT_REDIRECT_URL = "/polls/login"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

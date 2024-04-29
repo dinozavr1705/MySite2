@@ -1,0 +1,11 @@
+aside{
+float:left;
+background:#181818;
+width:100%;
+padding:2.5%;
+height:120vh;
+color:white;
+border-right: 5px solid grey;
+}
+aside h1{
+color:white}

@@ -44,17 +44,19 @@ def list_of_profiles(request):
 
     print(a)
     return render(request,"main/page_of_profiles.html",{"a":a})
+def user_list(request):
+    all_users = User.objects.all()
+    for i in all_users:
+        print(i.username)
+        print(i.skills)
+    return render(request,"main/user_list.html",{"users":all_users})
 
-def loginuser(request):
-    if request.method == "POST":
-        user = authenticate(request, username=request.POST.get('username'), password=request.POST.get('password'))
-        if user is None:
-            return render(request, 'registration/login.html', {"form": AuthenticationForm(), 'error': "Invalid login credentials!"})
-        else:
 
-            return render(request, "main/page_of_profile.html", {"user": user})
-    else:
-        return render(request, 'registration/login.html', {"form": AuthenticationForm()})
+
+
+def login(request):
+    return render(request,"main/registration/login.html")
+
 
 
 def test_func(request):
