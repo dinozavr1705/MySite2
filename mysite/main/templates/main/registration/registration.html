@@ -10,17 +10,18 @@
 
 <form method="post">
     <h3>Регистрация</h3>
-    <label for="login">введите логин:</label>
-    <input type="text" id="login" name="login">
-    <label for="password">введите пароль:</label>
-    <input type="text" id="password" name="password">
+    {% csrf_token %}
+    {{form}}
+    {% if form.errors %}
+      {% for field in form %}
+
+           {% for error in field.errors %}
+                {{field.label}}: {{ error|escape }}
+           {% endfor %}
+
+      {% endfor %}
+    {% endif %}
+    <button type="submit" >регистрация</button>
 </form>
-<form>
-    <form action="new_user"></form>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" >регистрация
-        </button>
-    </form>
 </body>
 </html>

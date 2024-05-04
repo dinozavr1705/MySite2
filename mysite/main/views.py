@@ -8,7 +8,7 @@ def button_view(request):
 
 
 def test_function(request):
-    return render(request, "main/index.html")
+    return render(request, "main/index.html", {'user': request.user})
 
 
 def login(request):
@@ -18,6 +18,7 @@ def login(request):
             return render(request, 'main/registration/login.html',
                           {"form": AuthenticationForm(),
                            "error": "Невалидные данные"})
+
     else:
         return render(request, "main/registration/login.html", {'form': form, 'error': ""})
 

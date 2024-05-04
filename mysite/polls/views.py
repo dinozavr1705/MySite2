@@ -26,17 +26,16 @@ def func(request):
 def new_user(request):
     form = UserForm()
     if request.method == 'POST':
+        print(form.errors)
         if form.is_valid():
             name = request.POST.get('username')
             password = request.POST.get('password')
-            # skills = request.POST.get('skills').split()
-            form.save()
-            username = form.cleaned_data.get('username')
+                # skills = request.POST.get('skills').split()
             newuser = User.objects.create(username=name, password=password, rating=0)
-            print(newuser)
             login(request, newuser)
-        else:
-            form = UserForm()
+            return redirect("/")
+    else:
+        form = UserForm()
     return render(request, 'main/registration/registration.html', {'form': form })
 
 def list_of_profiles(request):
@@ -54,7 +53,7 @@ def user_list(request):
 
 
 
-def login(request):
+def loginTest(request):
     return render(request,"main/registration/login.html")
 
 

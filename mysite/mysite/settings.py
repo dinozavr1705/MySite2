@@ -97,6 +97,7 @@ TIME_ZONE = 'GMT'
 USE_I18N = True
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = "/login"
+AUTH_USER_MODEL = "polls.User"
 USE_TZ = True
 LOGOUT_REDIRECT_URL = "/polls/login"
 
